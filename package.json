@@ -1,0 +1,32 @@
+{
+    "name": "techblog",
+    "version": "1.0.0",
+    "description": "This app's purpose is to create a space where a user can create an account and create read update and delete posts.",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/bonniereed/techBlog.git"
+    },
+    "author": "Bonnie Reed",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/bonniereed/techBlog/issues"
+    },
+    "homepage": "https://github.com/bonniereed/techBlog#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "connect-session-sequelize": "^7.1.2",
+        "express-handlebars": "^5.3.4",
+        "express-session": "^1.17.2"
+    },
+    "devDependencies": {
+        "minimist": "^1.2.5"
+    },
+    "resolutions": {
+        "hoek": "4.2.1"
+    }
+}

@@ -1,0 +1,24 @@
+<!-- Loop over each object in the comments array -->
+{{#each comments as |comment| }}
+<div class="row mb-4 comment">
+  <div class="col-md-5">
+    <h2>
+      <!-- Call helper function with triple brackets to render the emoji span as HTML -->
+  
+      <a href="/comments/{{comment.id}}">{{comment.title}}</a>
+    </h2>
+    <p>
+      <span for="img" aria-label="money">💲</span>
+      <!-- Pass needed_funding value to the helper function -->
+      <span class="topic">{{comment.topic}}</span>
+    
+    </p>
+    <p>Created by {{User.name}} on {{format_date comment.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{comment.comment}}
+    </p>
+  </div>
+</div>
+{{/each}}
