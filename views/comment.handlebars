@@ -1,12 +1,15 @@
+{{#each comments as |comment| }}
 <div class="text-center">
-  <h2>{{user.name}}</h2>
+  <h2>{{name}}</h2>
   <p>{{title}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
+  <p>Created by {{user_name}} on {{date_created}}</p>
   <p>
     <span for="img" aria-label="money">💲</span>
     <span class="dollar-amount">{{topic}}</span>
   </p>
+  <p>{{comment}}</p>
   <p>
     <button class="btn btn-primary">Feel free to comment!</button>
   </p>
 </div>
+{{/each}}

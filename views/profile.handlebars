@@ -1,6 +1,7 @@
+{{#each comments as |comment| }}
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{user.name}}!</h2>
+    <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
 
@@ -26,23 +27,20 @@
       </div>
     </form>
   </div>
-
-  {{#if comment.length}}
   <div class="col-md-6 comment-list">
     <h3>Comments:</h3>
-
-    {{#each comments as |comment|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/comments/{{comment.id}}">{{comment.title}}</a></h4>
+        <h4><a href="/comment/{{{id}}}">{{title}}</a></h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{comment.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{{id}}}">DELETE</button>
       </div>
     </div>
-    {{/each}}
+ 
   </div>
-  {{/if}}
+
 </div>
+{{/each}}
 
 <script src="/js/profile.js"></script>

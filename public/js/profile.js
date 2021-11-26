@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const context = document.querySelector('#comment-context').value.trim();
 
     if (title && topic && context) {
-        const response = await fetch(`/api/comment`, {
+        const response = await fetch(`/api/comments`, {
             method: 'POST',
             body: JSON.stringify({ title, topic, context }),
             headers: {
@@ -15,7 +15,7 @@ const newFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            document.location.replace('/profile');
+            document.location.replace('/');
         } else {
             alert('Failed to create comment');
         }

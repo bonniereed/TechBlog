@@ -2,33 +2,40 @@ const router = require('express').Router();
 const { Comment, User } = require('../models');
 const withAuth = require('../utils/auth');
 
+//hompage rendering
 router.get('/', async (req, res) => {
     try {
-        // Get all comments and JOIN with user data
-        const commentData = await Comment.findAll({
-            include: [
-                {
-                    model: User,
-                    attributes: ['name'],
-                },
-            ],
+        // render homepage
+        res.render('homepage', {
+            logged_in: req.session.logged_in,
         });
+        console.log(req.session);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
-        // Serialize data so the template can read it
-        const comment = commentData.map((comment) =>
+// renders all comments
+router.get('/comment', async (req, res) => {
+    try {
+        const commentData = await Comment.findAll({
+            where: {
+                user_id: null,
+            },
+        });
+        const comments = commentData.map((comment) =>
             comment.get({ plain: true })
         );
 
-        // Pass serialized data and session flag into template
-        res.render('homepage', {
-            comment,
+        res.render('comment', {
+            comments,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
         res.status(500).json(err);
     }
 });
-
+//render by individual comment
 router.get('/comment/:id', async (req, res) => {
     try {
         const commentData = await Comment.findByPk(req.params.id, {
@@ -43,7 +50,7 @@ router.get('/comment/:id', async (req, res) => {
         const comment = commentData.get({ plain: true });
 
         res.render('comment', {
-            ...comment,
+            comment,
             logged_in: req.session.logged_in,
         });
     } catch (err) {
@@ -54,16 +61,20 @@ router.get('/comment/:id', async (req, res) => {
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
     try {
-        // Find the logged in user based on the session ID
+        console.log(req.session.user_id);
+        // Find the logged in trainer based on the session ID
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [{ model: Comment }],
         });
 
         const user = userData.get({ plain: true });
-
+        const { comments } = user;
+        // console.log(trainer);
+        console.log(comments);
         res.render('profile', {
-            ...user,
+            user,
+            comments,
             logged_in: true,
         });
     } catch (err) {
@@ -71,8 +82,11 @@ router.get('/profile', withAuth, async (req, res) => {
     }
 });
 
+// render login screen
 router.get('/login', (req, res) => {
-    // If the user is already logged in, redirect the request to another route
+    console.log('this is inside of login route');
+    console.log(req.session);
+    // If the trainer is already logged in, redirect the request to another route
     if (req.session.logged_in) {
         res.redirect('/profile');
         return;
