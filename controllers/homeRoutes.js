@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Comment, User } = require('../models');
+const { Comment, User, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 //hompage rendering
@@ -15,6 +15,49 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+// renders all comments
+router.get('/post', async (req, res) => {
+    try {
+        const postData = await Post.findAll({
+            where: {
+                user_id: null,
+            },
+        });
+        const post = postData.map((post) =>
+            post.get({ plain: true })
+        );
+
+        res.render('post', {
+            posts,
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+//render by individual comment
+router.get('/post/:id', async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id, {
+            include: [
+                {
+                    model: User,
+                    attributes: ['name'],
+                },
+            ],
+        });
+
+        const post = postData.get({ plain: true });
+
+        res.render('post', {
+            post,
+            logged_in: req.session.logged_in,
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 // renders all comments
 router.get('/comment', async (req, res) => {
     try {
