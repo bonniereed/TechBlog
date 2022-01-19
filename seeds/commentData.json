@@ -1,18 +1,18 @@
+
 [
     {
-        "title": "First Blog Post",
-        "topic": "This is the first blog post ever",
-        "comment": "example"
-    },
-
-    {
-        "title": "The Ultimate Tech Quiz",
-        "topic": "A web app that will give users 10 new technical questions each day and track their progress in things like programming, cybersecurity, database architecture, and more!",
-        "comment": "example"
+        "comment_text": "First comment",
+        "user_id": 2,
+        "post_id": 1
     },
     {
-        "title": "Roll 'Em Up",
-        "topic": "A game for Windows and macOS where players move a ball through a series of increasingly challenging mazes.",
-        "comment": "example"
+        "comment_text": "Second comment",
+        "user_id": 3,
+        "post_id": 1
+    },
+    {
+        "comment_text": "Third comment",
+        "user_id": 1,
+        "post_id": 2
     }
 ]
