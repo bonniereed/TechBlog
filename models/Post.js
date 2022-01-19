@@ -5,20 +5,20 @@ class Post extends Model { }
 
 Post.init(
     {
-        post_id: {
+        id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true,
         },
-        title: {
+        Post_title: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        text: {
+        post_text: {
             type: DataTypes.STRING,
         },
-        date_created: {
+        date_posted: {
             type: DataTypes.DATE,
             allowNull: false,
             defaultValue: DataTypes.NOW,
