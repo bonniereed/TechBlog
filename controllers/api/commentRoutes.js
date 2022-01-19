@@ -1,6 +1,6 @@
-const router = require('express').Router();
-const { Comment } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Comment, Post, User } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", async (req, res) => {
     try {
@@ -13,12 +13,11 @@ router.get("/", async (req, res) => {
     }
 });
 
-//post request data
 router.post("/", withAuth, async (req, res) => {
     try {
         console.log(req.session);
         const newComment = await Comment.create({
-            comment_content: req.body.comment_content,
+            comment_text: req.body.comment_text,
             user_id: req.session.user_id,
             post_id: req.body.post_id,
         });

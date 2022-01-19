@@ -11,12 +11,13 @@ Post.init(
             primaryKey: true,
             autoIncrement: true,
         },
-        Post_title: {
+        post_title: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         post_text: {
             type: DataTypes.STRING,
+            allowNull: false,
         },
         date_posted: {
             type: DataTypes.DATE,
@@ -36,6 +37,8 @@ Post.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',
-    });
-module.exports = Post; 
+        modelName: 'post',
+    }
+);
+
+module.exports = Post;
