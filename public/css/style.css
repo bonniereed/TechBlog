@@ -18,8 +18,24 @@ header,
     text-decoration: underline;
 }
 
-.dollar-amount {
-    color: #056605;
-    font-weight: bold;
-    margin-left: -5px;
+header {
+    background-color: #632626;
+    color:#FFEEAD;
+}
+a{
+    text-decoration: none;
+    color: #BF8B67;
+}
+a:hover{
+    text-decoration: none;
+    color:#d3c68f;
+}
+
+
+
+main{
+   color:#9D5353
+}
+button{
+    background-color:#632626
 }
