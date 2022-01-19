@@ -1,14 +1,42 @@
-<div class="text-center">
-  {{}}
-  <h2>{{post.id}}</h2>
-  <p>{{post.title}}</p>
-  <p>Created by {{post.user_id}} on {{post.date_created}}</p>
-  <p>
-    <span for="img" aria-label="money"></span>
-    <span class="dollar-amount">{{text}}</span>
-  </p>
-  <p>{{post.date_created}</p>
-  <p>
-    <button class="btn btn-primary">Feel free to comment!</button>
-  </p>
+<div class=" mb-4 project">
+  <div>
+    <h2>
+      {{post.post_title}}
+    </h2>
+    <p>Created by {{post.user.username}} on {{format_date post.date_posted}}</p>
+  </div>
+  <div>
+    <p>
+      {{post.post_text}}
+    </p>
+  </div>
 </div>
+<div>
+  {{#if logged_in}}
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h3>Write a new comment:</h3>
+      <form class="form new-comment-form">
+        <div class="form-group">
+          <label for="comment-content">Comment:</label>
+          <textarea class="form-input" id="comment-content" name="comment-content">Share your opinion!</textarea>
+        </div>
+        <div class="form-group">
+          <p name="post_id" id="post_id">{{post.id}}</p>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+    {{/if}}
+  </div>
+  <div>
+    <h3>Comments</h3>
+    {{#each comments as |comment|}}
+    <div>
+      <h6>{{comment.user.username}} on {{format_date comment.date_posted}}</h6>
+      <p>{{comment.comment_text}}</p>
+    </div>
+    {{/each}}
+  </div>
+
+  <script src="/js/post.js"></script>
