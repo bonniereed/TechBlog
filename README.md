@@ -14,4 +14,5 @@
 
 
 
-# Credits: This project was created by yours truly. Thanks for taking the time to check it out!
+# Credits: 
+This project was created by yours truly. Thanks for taking the time to check it out!
