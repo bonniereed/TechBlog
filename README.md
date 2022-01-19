@@ -5,10 +5,13 @@
     https://techblog9001.herokuapp.com/
 
     Screenshot:
-    <img width="768" alt="Tech Blog" src="https://user-images.githubusercontent.com/46511972/149821401-a48ae459-9f24-4bbc-847e-c27813c550ca.png">
+    
+<img width="768" alt="Tech Blog" src="https://user-images.githubusercontent.com/46511972/150070757-b9de4903-802c-4385-aefd-72f87b6133e6.png">
 
 
 # Techologies Used:
     This app utilizez Handlebars, a REST API, JavaScript, and Node.JS.
 
-#
+
+
+# Credits: This project was created by yours truly. Thanks for taking the time to check it out!
